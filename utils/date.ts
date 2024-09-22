@@ -5,7 +5,7 @@ export class DateFormatter {
   constructor(initialDate = new Date()) {
     this.date = initialDate
   }
-  fomatJapaneseDate() {
+  formatJapaneseDate() {
     return format(this.date, 'full')
   }
   formatJapaneseDateTime() {
