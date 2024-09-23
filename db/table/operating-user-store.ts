@@ -8,7 +8,7 @@ export const operatingUserStore = pgTable(
   {
     id: serial('id').primaryKey(),
     operatingUserId: serial('operating_user_id').notNull(),
-    storeId: serial('operating_user_id').notNull(),
+    storeId: serial('store_id').notNull(),
     createdAt: timestamp('created_at', { mode: 'string' })
       .notNull()
       .default(sql`now()`),

@@ -1,5 +1,6 @@
 import { relations, sql } from 'drizzle-orm'
 import {
+  boolean,
   foreignKey,
   pgTable,
   serial,
@@ -8,6 +9,7 @@ import {
 } from 'drizzle-orm/pg-core'
 import { operatingCompany } from './operating-company'
 import { operatingUserStore } from './operating-user-store'
+import { reservation } from './reservation'
 
 export const store = pgTable(
   'store',
@@ -40,4 +42,5 @@ export const storeRelations = relations(store, ({ one, many }) => ({
     references: [operatingCompany.id],
   }),
   operatingUserStores: many(operatingUserStore),
+  reservations: many(reservation),
 }))
