@@ -5,7 +5,7 @@
 
   <TimeSlotSelector
     :schedules="schedules"
-    @time-range-selected="onTimeRangeSelected(startTime, endTime)"
+    @time-range-selected="onTimeRangeSelected"
   />
 </template>
 
@@ -16,10 +16,10 @@ const schedules = ref()
 const currentDate = new DateFormatter().formatJapaneseDate()
 
 // ストアでいいかも？
-const startTime = new DateParser(
+const openHour = new DateParser(
   `${currentDate} 09:00:00`
 ).parseJapaneseDateTime()
-const endTime = new DateParser(
+const closeHour = new DateParser(
   `${currentDate} 18:00:00`
 ).parseJapaneseDateTime()
 
@@ -34,6 +34,6 @@ const onTimeRangeSelected = (startTime: Date, endTime: Date) => {
 }
 
 onMounted(() => {
-  schedules.value = getAvailableReservations(startTime, endTime)
+  schedules.value = getAvailableReservations(openHour, closeHour)
 })
 </script>
