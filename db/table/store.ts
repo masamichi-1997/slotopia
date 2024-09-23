@@ -15,6 +15,9 @@ export const store = pgTable(
     id: serial('id').primaryKey(),
     operatingCompanyId: serial('operating_company_id').notNull(),
     name: varchar('name', { length: 255 }).notNull(),
+    openHour: varchar('open_hour', { length: 255 }).notNull(),
+    closeHour: varchar('close_hour', { length: 255 }).notNull(),
+    canReserveToday: boolean('can_reserve_today').notNull().default(false),
     createdAt: timestamp('created_at', { mode: 'string' })
       .notNull()
       .default(sql`now()`),
