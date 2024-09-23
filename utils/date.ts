@@ -1,4 +1,4 @@
-import { format, monthEnd, monthStart } from '@formkit/tempo'
+import { format, monthEnd, monthStart, parse } from '@formkit/tempo'
 
 export class DateFormatter {
   private date: Date
@@ -6,10 +6,10 @@ export class DateFormatter {
     this.date = initialDate
   }
   formatJapaneseDate() {
-    return format(this.date, 'full')
+    return format(this.date, 'YYYY-MM-DD')
   }
   formatJapaneseDateTime() {
-    return format(this.date, { time: 'short' })
+    return format(this.date, 'HH:mm')
   }
   getStartOfMonth() {
     const startOfMonth = monthStart(this.date)
@@ -18,5 +18,16 @@ export class DateFormatter {
   getEndOfMonth() {
     const endOfMonth = monthEnd(this.date)
     return format(endOfMonth)
+  }
+}
+
+export class DateParser {
+  private date: string
+  constructor(initialDate: string) {
+    this.date = initialDate
+  }
+
+  parseJapaneseDateTime() {
+    return parse(this.date, 'YYYY-MM-DD HH:mm:ss')
   }
 }
