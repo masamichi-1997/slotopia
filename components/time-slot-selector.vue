@@ -60,6 +60,7 @@ const handleSelectedTime = (date: string, time: string) => {
       triggerTimeRangeSelection()
     } else {
       updateTimesForEarlierSelection(formattedTime)
+      triggerTimeRangeSelection()
     }
     return
   }
